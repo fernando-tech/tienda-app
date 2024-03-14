@@ -1,5 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: montserrat;
+  src: url('./assets/fonts/Montserrat/static/Montserrat-Light.ttf');
+}
+
+@font-face {
+  font-family: source-sans;
+  src: url('./assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+}
+
 body {
   font-family: source-sans;
 }
