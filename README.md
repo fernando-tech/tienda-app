@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Angulartest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
@@ -29,4 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 =======
 # inicio-front
 Template inicial de front end con angular 14
+>>>>>>> origin/master
+=======
+# tienda-app
+Gestión de tienda, proyecto fes
 >>>>>>> origin/master
