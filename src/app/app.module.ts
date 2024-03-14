@@ -10,9 +10,10 @@ import { HeaderComponent } from './shared/header/header.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
 import { PersonalComponent } from './pages/personal/personal.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { PersonalComponent } from './pages/personal/personal.component';
     BreadcrumbsComponent,
     ProductosComponent,
     EmpleadosComponent,
-    NotFoundComponent,
     VentasComponent,
-    PersonalComponent
+    PersonalComponent,
+    PageNotFoundComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
