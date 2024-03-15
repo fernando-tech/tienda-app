@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PersonalComponent } from './personal/personal.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { EmpleadosComponent } from './empleados/empleados.component';
@@ -19,7 +18,6 @@ import { AppRoutingModule } from '../app-routing.module';
     EmpleadosComponent,
     VentasComponent,
     PersonalComponent,
-    PageNotFoundComponent,
     PagesComponent
   ],
   exports:[
@@ -28,7 +26,6 @@ import { AppRoutingModule } from '../app-routing.module';
     EmpleadosComponent,
     VentasComponent,
     PersonalComponent,
-    PageNotFoundComponent,
     PagesComponent,
   ],
   imports: [
