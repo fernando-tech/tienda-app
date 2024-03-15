@@ -5,7 +5,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { PersonalComponent } from './pages/personal/personal.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
 import { PagesComponent } from './pages/pages.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', component: PagesComponent,

@@ -12,7 +12,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
 import { PersonalComponent } from './pages/personal/personal.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PagesComponent } from './pages/pages.component';
 
 @NgModule({
