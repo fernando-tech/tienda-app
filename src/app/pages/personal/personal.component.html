@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         <div style="text-align: right;">
-          <button type="button" class="btn btn-info">Alta Empleado</button>
+          <button type="button" class="btn btn-info">ALTA DE EMPLEADO</button>
       </div>
       </div>
       <!-- /.card-header -->
@@ -17,6 +17,7 @@
               <th>FECHA DE SALIDA</th>
               <th>PUESTO</th>
               <th>ESTATUS</th>
+              <th>ACCI&Oacute;N</th>
             </tr>
           </thead>
           <tbody>
@@ -30,6 +31,10 @@
               <ng-template #noActivo>
                 <td>INACTIVO</td>
               </ng-template>
+              <td >
+                <button type="button" class="btn btn-danger" *ngIf="empleado.activo">INACTIVAR</button>
+                <button type="button" class="btn btn-success" *ngIf="!empleado.activo">ACTIVAR</button>
+              </td>
             </tr>
           </tbody>
         </table>
