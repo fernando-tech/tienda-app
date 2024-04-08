@@ -8,6 +8,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { RolesComponent } from './roles/roles.component';
 
 
 
@@ -18,7 +19,8 @@ import { AppRoutingModule } from '../app-routing.module';
     EmpleadosComponent,
     VentasComponent,
     PersonalComponent,
-    PagesComponent
+    PagesComponent,
+    RolesComponent
   ],
   exports:[
     HomeComponent,
