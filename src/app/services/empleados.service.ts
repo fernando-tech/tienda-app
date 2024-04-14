@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { map, catchError, tap, filter } from 'rxjs/operators';
 
 
 
@@ -18,8 +19,8 @@ export class EmpleadosService {
     private router: Router
   ) { }
 
-  obtenerEmpleados(): Observable<any> {
-    return this.http.get<any>(`${this.URL}`);
+  obtenerEmpleados(page: number): Observable<any> {
+    return this.http.get<any>(`${this.URL}?page=${page}&size=5`);
   }
 
 }

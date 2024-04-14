@@ -14,7 +14,7 @@ const routes: Routes = [
       {path: 'home', component: HomeComponent, data: {title: "Nosotros"}},
       {path: 'productos', component: ProductosComponent, data: {title: "Inventario"}},
       {path: 'ventas', component: VentasComponent, data: {title: "Ventas"}},
-      {path: 'personal', component: PersonalComponent, data: {title: "Personal"}},
+      {path: 'personal/:page', component: PersonalComponent, data: {title: "Personal"}},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]},
 ];

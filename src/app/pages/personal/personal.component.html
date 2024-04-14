@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-header">
         <div style="text-align: right;">
-          <button type="button" class="btn btn-info">ALTA DE EMPLEADO</button>
+          <button type="button" class="btn btn-success" title="Alta de Empleado"><i class="fas fa-plus-square"></i></button>
       </div>
       </div>
       <!-- /.card-header -->
@@ -32,8 +32,8 @@
                 <td>INACTIVO</td>
               </ng-template>
               <td >
-                <button type="button" class="btn btn-danger" *ngIf="empleado.activo">INACTIVAR</button>
-                <button type="button" class="btn btn-success" *ngIf="!empleado.activo">ACTIVAR</button>
+                <button type="button" class="btn btn-sm btn-danger" *ngIf="empleado.activo" title="Baja de empleado">INACTIVAR</button>
+                <button type="button" class="btn btn-sm btn-primary" *ngIf="!empleado.activo" title="Reactivar empleado">ACTIVAR</button>
               </td>
             </tr>
           </tbody>
