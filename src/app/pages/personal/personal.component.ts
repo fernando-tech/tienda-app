@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Empleado } from './Empleado';
 import { EmpleadosService } from 'src/app/services/empleados.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-personal',
@@ -11,22 +12,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PersonalComponent implements OnInit {
 
   empleados: Empleado[] = [];
-  page: any;
-  paginador: any;
-  pathPaginator: any;
 
   constructor(private empleadosService: EmpleadosService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(param => {
-      this.page = 0;
-    })
-
     this.getEmpleados();
   }
 
   getEmpleados(): void {
-    this.empleadosService.obtenerEmpleados(this.page).subscribe(
+    this.empleadosService.obtenerEmpleados(0).subscribe(
       (datos) => {
         // Manejar los datos recibidos
         this.empleados = datos.content;
@@ -39,4 +33,25 @@ export class PersonalComponent implements OnInit {
     );
   }
 
+  eliminarEmpleado(idEmpleado: number){
+    Swal.fire({
+      title: '¿Esta seguro?',
+      text: "El empleado sera eliminado",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.empleadosService.eliminarEmpleado(idEmpleado).subscribe(
+          (datos) => {
+            Swal.fire('Correcto', '¡Se elimino correctamente!', 'success').then(() => {
+              this.getEmpleados();
+            });
+          });
+      }
+    })
+  }
 }

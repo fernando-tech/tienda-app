@@ -9,17 +9,21 @@ import { ProductosService } from 'src/app/services/productos.service';
 })
 export class ProductosComponent implements OnInit {
 
+  productos: any[] = [];
+  paginaActual: any = 0;
+  elementosPorPagina:any = 10;
+
   constructor(private productosService: ProductosService, private ActivatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    //this.getProductos();
+    this.getProductos();
   }
 
-  /*getProductos(): void {
-    this.productosService.obtenerProductos().subscribe(
+  getProductos(): void {
+    this.productosService.obtenerProductos(this.paginaActual).subscribe(
       (datos) => {
         // Manejar los datos recibidos
-        this.productos = datos;
+        this.productos = datos.content;
         console.log(this.productos);
       },
       (error) => {
@@ -27,6 +31,6 @@ export class ProductosComponent implements OnInit {
         console.error('Error al obtener datos:', error);
       }
     );
-  }*/
+  }
 
 }

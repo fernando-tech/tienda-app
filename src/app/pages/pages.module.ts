@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { RolesComponent } from './roles/roles.component';
+import { AltaComponent } from './personal/alta/alta.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,6 +21,7 @@ import { RolesComponent } from './roles/roles.component';
     PersonalComponent,
     PagesComponent,
     RolesComponent,
+    AltaComponent,
   ],
   exports:[
     HomeComponent,
@@ -31,6 +34,8 @@ import { RolesComponent } from './roles/roles.component';
     CommonModule,
     SharedModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

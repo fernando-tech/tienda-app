@@ -1,60 +1,34 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="card-header">
-
-        <div class="card-tools">
-          <div class="input-group input-group-sm" style="width: 150px;">
-            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
+      <div class="card-header" style="border-bottom: none;">
+          <div style="text-align: right;">
+            <button type="button" class="btn btn-success" title="Alta de Producto"><i class="fas fa-plus-square"></i></button>
         </div>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+      <div class="card-body table-responsive pt-0" style="height: 450px;">
+        <table class="table table-head-fixed table-hover text-nowrap">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>User</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Reason</th>
+              <th>C&Oacute;DIGO</th>
+              <th>NOMBRE</th>
+              <th>DETALLE</th>
+              <th>PRECIO</th>
+              <th>INVENTARIO</th>
+              <th>MARCA</th>
+              <th>CATEGOR&Iacute;A</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>183</td>
-              <td>John Doe</td>
-              <td>11-7-2014</td>
-              <td><span class="tag tag-success">Approved</span></td>
-              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-              <td>219</td>
-              <td>Alexander Pierce</td>
-              <td>11-7-2014</td>
-              <td><span class="tag tag-warning">Pending</span></td>
-              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-              <td>657</td>
-              <td>Bob Doe</td>
-              <td>11-7-2014</td>
-              <td><span class="tag tag-primary">Approved</span></td>
-              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-            </tr>
-            <tr>
-              <td>175</td>
-              <td>Mike Doe</td>
-              <td>11-7-2014</td>
-              <td><span class="tag tag-danger">Denied</span></td>
-              <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+            <tr *ngFor="let producto of productos">
+              <td>{{producto.codigoProducto}}</td>
+              <td>{{producto.nombreProducto}}</td>
+              <td>{{producto.descripcion}}</td>
+              <td>{{producto.precio}}</td>
+              <td>{{producto.inventario}}</td>
+              <td>{{producto.marca.nombreMarca}}</td>
+              <td>{{producto.categoria.nombreCategoria}}</td>
             </tr>
           </tbody>
         </table>

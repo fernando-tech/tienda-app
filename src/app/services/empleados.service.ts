@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { map, catchError, tap, filter } from 'rxjs/operators';
+import { AltaRequest } from '../pages/personal/alta/AltaRequest';
 
 
 
@@ -20,7 +20,14 @@ export class EmpleadosService {
   ) { }
 
   obtenerEmpleados(page: number): Observable<any> {
-    return this.http.get<any>(`${this.URL}?page=${page}&size=5`);
+    return this.http.get<any>(`${this.URL}?page=${page}&size=100`);
   }
 
+  altaEmpelado(request: AltaRequest){
+    return this.http.post<any>(`${this.URL}`, request);
+  }
+
+  eliminarEmpleado(idEmpleado: number){
+    return this.http.delete<any>(`${this.URL}/${idEmpleado}`);
+  }
 }

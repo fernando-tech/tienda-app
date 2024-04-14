@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductosService {
+export class RolesService {
 
-  private URL = 'http://localhost:8080/productos';
+  private URL = 'http://localhost:8080/roles';
   private httpHeaders = new HttpHeaders({ 'Content-type': 'application/json' });
 
   constructor(
@@ -16,7 +16,7 @@ export class ProductosService {
     private router: Router
   ) { }
 
-  obtenerProductos(page: number): Observable<any> {
-    return this.http.get<any>(`${this.URL}?page=${page}&size=10`);
+  obtenerRoles(): Observable<any> {
+    return this.http.get<any>(`${this.URL}`);
   }
 }
