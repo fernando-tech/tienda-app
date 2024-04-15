@@ -10,6 +10,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { RolesComponent } from './roles/roles.component';
 import { AltaComponent } from './personal/alta/alta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AltaProductosComponent } from './productos/alta-productos/alta-productos.component';
 
 
 
@@ -22,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PagesComponent,
     RolesComponent,
     AltaComponent,
+    AltaProductosComponent
   ],
   exports:[
     HomeComponent,

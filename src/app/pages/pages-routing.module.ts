@@ -6,6 +6,7 @@ import { ProductosComponent } from './productos/productos.component';
 import { VentasComponent } from './ventas/ventas.component';
 import { PersonalComponent } from './personal/personal.component';
 import { AltaComponent } from './personal/alta/alta.component';
+import { AltaProductosComponent } from './productos/alta-productos/alta-productos.component';
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
       {path: 'ventas', component: VentasComponent, data: {title: "Ventas"}},
       {path: 'personal', component: PersonalComponent, data: {title: "Personal"}},
       {path: 'personal/alta', component: AltaComponent, data: {title: "Alta de Empleado"}},
+      {path: 'productos/alta', component: AltaProductosComponent, data: {title: "Alta de Producto"}},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]},
 ];
