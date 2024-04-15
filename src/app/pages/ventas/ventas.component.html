@@ -5,11 +5,14 @@
         <div class="col-md-3">
           <div class="card">
             <div class="card-body">
-              <form autocomplete="off">
+              <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="agregarProducto()">
                 <div class="form-group">
                   <label for="exampleInputEmail1">C&oacute;digo del producto</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar C&oacute;digo">
+                  <input formControlName="codigo" type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingresar C&oacute;digo">
                 </div>
+                <div style="text-align: center;">
+                  <button type="submit" class="btn btn-primary" title="Agregar Producto">Agregar</button>
+              </div>
                 <!-- /.card-body -->
               </form>
             </div>
@@ -33,71 +36,17 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Coca-Cola</td>
-                    <td>Refresco sabor cola de 500ml</td>
-                    <td>RF002</td>
-                    <td>13.00</td>
-                    <td>Boton</td>
+                  <tr *ngFor="let producto of productosAgregados ; let i = index">
+                    <td>{{i + 1}}</td>
+                    <td>{{producto.nombreProducto}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.codigoProducto}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>
+                      <button type="button" class="btn btn-sm btn-danger" title="Quitar producto" (click)="quitarProducto(i)">
+                        <i class="fas fa-trash"></i></button>
+                    </td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Donitas Bimbo</td>
-                    <td>Donitas azucaradas 500g</td>
-                    <td>AL004</td>
-                    <td>17.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Coca-Cola</td>
-                    <td>Refresco sabor cola de 500ml</td>
-                    <td>RF002</td>
-                    <td>13.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Donitas Bimbo</td>
-                    <td>Donitas azucaradas 500g</td>
-                    <td>AL004</td>
-                    <td>17.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Coca-Cola</td>
-                    <td>Refresco sabor cola de 500ml</td>
-                    <td>RF002</td>
-                    <td>13.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Donitas Bimbo</td>
-                    <td>Donitas azucaradas 500g</td>
-                    <td>AL004</td>
-                    <td>17.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>Coca-Cola</td>
-                    <td>Refresco sabor cola de 500ml</td>
-                    <td>RF002</td>
-                    <td>13.00</td>
-                    <td>Boton</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Donitas Bimbo</td>
-                    <td>Donitas azucaradas 500g</td>
-                    <td>AL004</td>
-                    <td>17.00</td>
-                    <td>Boton</td>
-                  </tr>
-
                 </tbody>
               </table>
             </div>
