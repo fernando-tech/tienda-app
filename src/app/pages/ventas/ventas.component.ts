@@ -10,6 +10,7 @@ import { ProductosService } from 'src/app/services/productos.service';
 })
 export class VentasComponent implements OnInit {
 
+  total:number = 0;
   index:number = 0;
   codigo:any;
   producto:any;
@@ -46,21 +47,21 @@ export class VentasComponent implements OnInit {
       );
     }
 
-    agregarProducto(){
+    agregarProducto(codigo: string){
 
-      this.codigo = this.formulario.value.codigo;
-
-      this.producto = this.productos.filter(elemento => elemento.codigoProducto.toUpperCase()
-      .includes(this.codigo.toUpperCase()));
+      this.producto = this.productos.filter(elemento => elemento.codigoProducto.toUpperCase() === codigo.toUpperCase());
 
       if(this.producto[0] != undefined){
         this.productosAgregados.push(this.producto[0]);
+        this.total = this.total + this.producto[0].precio;
       }
 
     }
 
-    quitarProducto(numProducto: number){
+    quitarProducto(numProducto: number, precio: number){
+
       this.productosAgregados.splice(numProducto, 1);
+      this.total = this.total - precio;
     }
 
 }
