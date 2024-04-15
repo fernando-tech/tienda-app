@@ -12,7 +12,7 @@
                 <div class="form-group">
                   <label for="lastName1">Nombre</label>
                   <input [(ngModel)]="nombre" (input)="convertirAMayusculas()" formControlName="nombre" type="text"
-                    class="form-control" id="nombre" [value]="empleado?.nombre">
+                    class="form-control" id="nombre" [value]="empleado?.nombre" placeholder="Ingrese el nombre">
                   <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
                     class="text-danger">
                     Este campo no puede estar vacio
@@ -26,7 +26,7 @@
                 <div class="form-group">
                   <label for="emailAddress1">Apellido Paterno</label>
                   <input [(ngModel)]="apellidoP" (input)="convertirAMayusculas()" formControlName="apellidoPaterno"
-                    type="text" class="form-control" id="apellidoPaterno" [value]="empleado?.apellidoPaterno">
+                    type="text" class="form-control" id="apellidoPaterno" [value]="empleado?.apellidoPaterno" placeholder="Ingrese el primer apellido">
                   <small
                     *ngIf="formulario.get('apellidoPaterno')?.invalid && formulario.get('apellidoPaterno')?.touched"
                     class="text-danger">
@@ -41,7 +41,7 @@
                 <div class="form-group">
                   <label for="phoneNumber1">Apellido Materno</label>
                   <input [(ngModel)]="apellidoM" (input)="convertirAMayusculas()" formControlName="apellidoMaterno"
-                    type="text" class="form-control" id="apellidoMaterno" [value]="empleado?.apellidoMaterno">
+                    type="text" class="form-control" id="apellidoMaterno" [value]="empleado?.apellidoMaterno" placeholder="Ingrese el segundo apellido">
                   <small
                     *ngIf="formulario.get('apellidoMaterno')?.invalid && formulario.get('apellidoMaterno')?.touched"
                     class="text-danger">

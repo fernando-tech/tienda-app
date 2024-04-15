@@ -12,7 +12,7 @@
                 <div class="form-group">
                   <label for="lastName1">Nombre</label>
                   <input formControlName="nombre" type="text"
-                    class="form-control" id="nombre" [value]="producto.nombre">
+                    class="form-control" id="nombre" [value]="producto?.nombre" placeholder="Ingrese el nombre">
                   <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
                     class="text-danger">
                     Este campo no puede estar vacio
@@ -26,7 +26,7 @@
                 <div class="form-group">
                   <label for="emailAddress1">Descripci&oacute;n</label>
                   <input formControlName="descripcion"
-                    type="text" class="form-control" id="descripcion" [value]="producto.descripcion">
+                    type="text" class="form-control" id="descripcion" [value]="producto?.descripcion" placeholder="Ingrese la descripci&oacute;n">
                   <small
                     *ngIf="formulario.get('descripcion')?.invalid && formulario.get('descripcion')?.touched"
                     class="text-danger">
@@ -39,9 +39,9 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <label for="emailAddress1">C&oacute;digo de producto</label>
+                  <label for="emailAddress1" >C&oacute;digo</label>
                   <input formControlName="codigo"
-                    type="text" class="form-control" id="codigo" [value]="producto.codigo">
+                    type="text" class="form-control" id="codigo" [value]="producto?.codigo" placeholder="Ingrese el c&oacute;digo del producto">
                   <small
                     *ngIf="formulario.get('codigo')?.invalid && formulario.get('codigo')?.touched"
                     class="text-danger">
@@ -52,11 +52,11 @@
               <div class="col-md-2"></div>
 
               <div class="col-md-2"></div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="emailAddress1">Precio</label>
-                  <input formControlName="precio"
-                    type="text" class="form-control" id="precio" [value]="producto.precio">
+                  <input formControlName="precio" pattern="^\d*(\.\d+)?$" (ngModel)="precioProducto"
+                    type="text" class="form-control" id="precio" [value]="producto?.precio" placeholder="Ingrese solo números">
                   <small
                     *ngIf="formulario.get('precio')?.invalid && formulario.get('precio')?.touched"
                     class="text-danger">
@@ -64,14 +64,11 @@
                   </small>
                 </div>
               </div>
-              <div class="col-md-2"></div>
-
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
+              <div class="col-md-4">
                 <div class="form-group">
-                  <label for="emailAddress1">Inventario</label>
-                  <input formControlName="inventario"
-                    type="text" class="form-control" id="inventario" [value]="producto.inventario">
+                  <label for="emailAddress1">Cantidad</label>
+                  <input formControlName="inventario" pattern="^\d*(\.\d+)?$" (ngModel)="cantidadProducto"
+                    type="text" class="form-control" id="inventario" [value]="producto?.inventario" placeholder="Ingrese solo números">
                   <small
                     *ngIf="formulario.get('inventario')?.invalid && formulario.get('inventario')?.touched"
                     class="text-danger">
@@ -89,10 +86,10 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="location1">Categor&iacute;a</label>
-                  <select formControlName="nombreCategoria" class="custom-select form-control" id="marca" name="location">
-                    <option *ngFor="let marca of marcas" [ngValue]="marca.idCategoria">{{marca.nombreCategoria}}</option>
+                  <select formControlName="categoria" class="custom-select form-control" id="categoria" name="location">
+                    <option *ngFor="let categoria of categorias" [ngValue]="categoria.idCategoria">{{categoria.nombreCategoria}}</option>
                   </select>
-                  <small *ngIf="formulario.get('nombreCategoria')?.invalid && formulario.get('nombreCategoria')?.touched"
+                  <small *ngIf="formulario.get('categoria')?.invalid && formulario.get('categoria')?.touched"
                     class="text-danger">
                     Este campo no puede estar vacio
                   </small>
@@ -104,7 +101,7 @@
                   <select formControlName="marca" class="custom-select form-control" id="marca" name="location">
                     <option *ngFor="let marca of marcas" [ngValue]="marca.idMarca">{{marca.nombreMarca}}</option>
                   </select>
-                  <small *ngIf="formulario.get('puesto')?.invalid && formulario.get('puesto')?.touched"
+                  <small *ngIf="formulario.get('marca')?.invalid && formulario.get('marca')?.touched"
                     class="text-danger">
                     Este campo no puede estar vacio
                   </small>
