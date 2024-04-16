@@ -12,7 +12,9 @@
                     placeholder="Ingresar C&oacute;digo">
                 </div>
                 <div style="text-align: center;">
-                  <button type="button" (click)="agregarProducto(this.formulario.value.codigo)" class="btn btn-primary" title="Agregar Producto">Agregar</button>
+                  <button type="button" (click)="agregarProducto(this.formulario.value.codigo)" class="btn btn-block btn-warning" title="Agregar Producto">
+                    <i class="fa fa-shopping-cart" style="color: white"></i>
+                  </button>
                 </div>
                 <!-- /.card-body -->
               </form>
@@ -25,7 +27,7 @@
 
             <!-- /.card-header -->
             <div class="card-body table-responsive pt-0 mt-2" style="height: 350px;">
-              <table class="table table-head-fixed table-hover table-striped">
+              <table class="table table-head-fixed table-hover">
                 <thead>
                   <tr>
                     <th style="width: 10px;">#</th>
@@ -54,10 +56,10 @@
             </div>
             <!-- /.card-body -->
           </div>
-          <div class="card-header">
+          <div class="card-header" style="border-bottom: none;">
             <h5 style="text-align: center;">Total: {{total}} pesos</h5>
-            <button type="button" routerLink="alta" class="btn btn-block btn-success"
-              title="Finalizar venta">Finalizar</button>
+            <button type="button" class="btn btn-block btn-success"
+              title="Finalizar venta" (click)="finalizarCompra()">Finalizar</button>
           </div>
         </div>
 

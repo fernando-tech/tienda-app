@@ -24,4 +24,8 @@ export class ProductosService {
   altaProductos(request: AltaRequest){
     return this.http.post<any>(`${this.URL}`, request);
   }
+
+  ventaProductos(request: any){
+    return this.http.post<any>(`${this.URL}/ventas`, request);
+  }
 }

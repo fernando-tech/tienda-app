@@ -3,7 +3,8 @@
     <div class="card">
       <div class="card-header" style="border-bottom: none;">
         <div style="text-align: right;">
-          <button type="button" routerLink="alta" class="btn btn-success" title="Alta de Empleado">ALTA EMPLEADO</button>
+          <button type="button" routerLink="alta" class="btn btn-primary" title="Alta de Empleado">ALTA
+            EMPLEADO</button>
         </div>
       </div>
       <!-- /.card-header -->
@@ -21,20 +22,23 @@
           <tbody>
             <tr *ngFor="let empleado of empleados">
               <td>{{empleado.idEmpleado}}</td>
-              <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}}  {{empleado.nombre}}</td>
+              <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}} {{empleado.nombre}}</td>
               <td>{{empleado.fechaIngreso}}</td>
               <td>{{empleado.rol.nombrePuesto}}</td>
-              <td >
-                <button type="button" class="btn btn-sm btn-danger" title="Baja de empleado" (click)="eliminarEmpleado(empleado.idEmpleado)">
+              <td>
+                <button type="button" class="btn btn-sm btn-primary" style="margin-right: 10px;"
+                  title="Editar de empleado" (click)="editarEmpleado(empleado.idEmpleado)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button type="button" class="btn btn-sm btn-danger" style="margin-right: 10px;" title="Baja de empleado"
+                  (click)="eliminarEmpleado(empleado.idEmpleado)">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-      <!-- /.card-body -->
+        <!-- /.card-body -->
+      </div>
     </div>
   </div>
-</div>
-
-

@@ -59,9 +59,23 @@ export class VentasComponent implements OnInit {
     }
 
     quitarProducto(numProducto: number, precio: number){
-
       this.productosAgregados.splice(numProducto, 1);
       this.total = this.total - precio;
+    }
+
+    finalizarCompra(){
+      console.log("Finalizar compra....", this.productosAgregados);
+
+      this.productosService.ventaProductos(this.productosAgregados).subscribe(
+        (datos) => {
+          // Manejar los datos recibidos
+          console.log("ventaaaaaaaaaa");
+        },
+        (error) => {
+          // Manejar errores
+          console.error('Error al obtener datos:', error);
+        }
+      );
     }
 
 }

@@ -54,4 +54,9 @@ export class PersonalComponent implements OnInit {
       }
     })
   }
+
+  editarEmpleado(idEmpleado: number){
+
+  }
+
 }

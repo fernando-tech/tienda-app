@@ -15,7 +15,7 @@ const routes: Routes = [
     children:[
       {path: 'home', component: HomeComponent, data: {title: "Nosotros"}},
       {path: 'productos', component: ProductosComponent, data: {title: "Inventario"}},
-      {path: 'ventas', component: VentasComponent, data: {title: "Ventas"}},
+      {path: 'ventas', component: VentasComponent, data: {title: "Punto de Venta"}},
       {path: 'personal', component: PersonalComponent, data: {title: "Personal"}},
       {path: 'personal/alta', component: AltaComponent, data: {title: "Alta de Empleado"}},
       {path: 'productos/alta', component: AltaProductosComponent, data: {title: "Alta de Producto"}},
