@@ -31,8 +31,8 @@
               <td>{{producto.marca.nombreMarca}}</td>
               <td>{{producto.categoria.nombreCategoria}}</td>
               <td>
-                <button type="button" class="btn btn-sm btn-primary" style="margin-right: 10px;"
-                  title="Editar de producto" (click)="editarProducto(producto.idProducto)">
+                <button type="button" [routerLink]="['/productos/editar', producto.idProducto]" class="btn btn-sm btn-primary" style="margin-right: 10px;"
+                  title="Editar de producto">
                   <i class="fas fa-edit"></i>
                 </button>
               </td>

@@ -2,7 +2,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body wizard-content">
-        <form autocomplete="off" class="tab-wizard wizard-circle" [formGroup]="formulario" (ngSubmit)="altaProducto()">
+        <form autocomplete="off" class="tab-wizard wizard-circle" [formGroup]="formulario" >
           <!-- Step 1 -->
           <section>
             <div class="row">
@@ -11,8 +11,8 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="lastName1">Nombre</label>
-                  <input formControlName="nombre" type="text"
-                    class="form-control" id="nombre" [value]="producto?.nombre" placeholder="Ingrese el nombre">
+                  <input (input)="onInputChange()" formControlName="nombre" type="text"
+                    class="form-control" id="nombre" [value]="producto?.nombreProducto" placeholder="Ingrese el nombre">
                   <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
                     class="text-danger">
                     Este campo no puede estar vacio
@@ -25,7 +25,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="emailAddress1">Descripci&oacute;n</label>
-                  <input formControlName="descripcion"
+                  <input (input)="onInputChange()" formControlName="descripcion"
                     type="text" class="form-control" id="descripcion" [value]="producto?.descripcion" placeholder="Ingrese la descripci&oacute;n">
                   <small
                     *ngIf="formulario.get('descripcion')?.invalid && formulario.get('descripcion')?.touched"
@@ -40,8 +40,8 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="emailAddress1" >C&oacute;digo</label>
-                  <input formControlName="codigo"
-                    type="text" class="form-control" id="codigo" [value]="producto?.codigo" placeholder="Ingrese el c&oacute;digo del producto">
+                  <input (input)="onInputChange()" formControlName="codigo" maxlength="5"
+                    type="text" class="form-control" id="codigo" [value]="producto?.codigoProducto" placeholder="Ingrese el c&oacute;digo del producto">
                   <small
                     *ngIf="formulario.get('codigo')?.invalid && formulario.get('codigo')?.touched"
                     class="text-danger">
@@ -55,7 +55,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="emailAddress1">Precio</label>
-                  <input formControlName="precio" pattern="^\d*(\.\d+)?$" (ngModel)="precioProducto"
+                  <input (input)="onInputChange()" formControlName="precio" pattern="^\d*(\.\d+)?$" (ngModel)="precioProducto"
                     type="text" class="form-control" id="precio" [value]="producto?.precio" placeholder="Ingrese solo números">
                   <small
                     *ngIf="formulario.get('precio')?.invalid && formulario.get('precio')?.touched"
@@ -67,7 +67,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="emailAddress1">Cantidad</label>
-                  <input formControlName="inventario" pattern="^\d*(\.\d+)?$" (ngModel)="cantidadProducto"
+                  <input (input)="onInputChange()" formControlName="inventario" pattern="^\d*(\.\d+)?$" (ngModel)="cantidadProducto"
                     type="text" class="form-control" id="inventario" [value]="producto?.inventario" placeholder="Ingrese solo números">
                   <small
                     *ngIf="formulario.get('inventario')?.invalid && formulario.get('inventario')?.touched"
@@ -86,7 +86,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="location1">Categor&iacute;a</label>
-                  <select formControlName="categoria" class="custom-select form-control" id="categoria" name="location">
+                  <select (input)="onInputChange()" formControlName="categoria" class="custom-select form-control" id="categoria" name="location">
                     <option *ngFor="let categoria of categorias" [ngValue]="categoria.idCategoria">{{categoria.nombreCategoria}}</option>
                   </select>
                   <small *ngIf="formulario.get('categoria')?.invalid && formulario.get('categoria')?.touched"
@@ -98,7 +98,7 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="location1">Marca</label>
-                  <select formControlName="marca" class="custom-select form-control" id="marca" name="location">
+                  <select (input)="onInputChange()" formControlName="marca" class="custom-select form-control" id="marca" name="location">
                     <option *ngFor="let marca of marcas" [ngValue]="marca.idMarca">{{marca.nombreMarca}}</option>
                   </select>
                   <small *ngIf="formulario.get('marca')?.invalid && formulario.get('marca')?.touched"
@@ -113,7 +113,10 @@
             <div class="row pt-5">
               <div class="col-md-4"></div>
               <div class="col-md-4">
-                <button type="submit" class="btn btn-primary btn-block" [disabled]="formulario.invalid">Continuar</button>
+                <button *ngIf='!idProducto else elseBlock' (click)="altaProducto()" class="btn btn-primary btn-block" [disabled]="formulario.invalid">Continuar</button>
+                <ng-template #elseBlock>
+                  <button class="btn btn-primary btn-block" (click)="actualizarProducto()" [disabled]="!inputTouched">Actualizar</button>
+              </ng-template>
               </div>
               <div class="col-md-4"></div>
             </div>

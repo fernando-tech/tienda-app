@@ -33,8 +33,4 @@ export class ProductosComponent implements OnInit {
     );
   }
 
-  editarProducto(idProducto: number){
-
-  }
-
 }

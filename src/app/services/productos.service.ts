@@ -18,11 +18,19 @@ export class ProductosService {
   ) { }
 
   obtenerProductos(page: number): Observable<any> {
-    return this.http.get<any>(`${this.URL}?page=${page}&size=10`);
+    return this.http.get<any>(`${this.URL}?page=${page}&size=100`);
+  }
+
+  obtenerProducto(idProducto: any): Observable<any> {
+    return this.http.get<any>(`${this.URL}/${idProducto}`);
   }
 
   altaProductos(request: AltaRequest){
     return this.http.post<any>(`${this.URL}`, request);
+  }
+
+  actualizarProducto(idProducto:any, request: any){
+    return this.http.put<any>(`${this.URL}/${idProducto}`, request);
   }
 
   ventaProductos(request: any){

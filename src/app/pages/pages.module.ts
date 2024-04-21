@@ -25,7 +25,7 @@ import { EditarPersonalComponent } from './personal/editar-personal/editar-perso
     RolesComponent,
     AltaComponent,
     AltaProductosComponent,
-    EditarPersonalComponent
+    EditarPersonalComponent,
   ],
   exports:[
     HomeComponent,

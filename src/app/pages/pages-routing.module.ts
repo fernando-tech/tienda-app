@@ -21,6 +21,7 @@ const routes: Routes = [
       {path: 'personal/alta', component: AltaComponent, data: {title: "Alta de Empleado"}},
       {path: 'personal/editar/:id', component: EditarPersonalComponent, data: {title: "Actualizar Empleado"}},
       {path: 'productos/alta', component: AltaProductosComponent, data: {title: "Alta de Producto"}},
+      {path: 'productos/editar/:id', component: AltaProductosComponent, data: {title: "Actualizar de Producto"}},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]},
 ];

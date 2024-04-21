@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 })
 export class AltaProductosComponent implements OnInit {
 
+  inputTouched: boolean = false;
   precioProducto: number = 0;
   cantidadProducto: number = 0;
   formulario: FormGroup;
@@ -21,6 +22,7 @@ export class AltaProductosComponent implements OnInit {
   marcas: any[] = [];
   categorias: any[] = [];
   altaRequest = new AltaRequest("","","",0,0,0,0);
+  idProducto:any;
 
 
 
@@ -33,7 +35,7 @@ export class AltaProductosComponent implements OnInit {
       this.formulario = this.fb.group({
         nombre: ['', Validators.required],
         descripcion: ['', Validators.required],
-        codigo: ['', Validators.required],
+        codigo: ['', [Validators.required, Validators.maxLength(5)]],
         precio: ['', Validators.required],
         inventario: ['', Validators.required],
         marca: ['', Validators.required],
@@ -42,8 +44,23 @@ export class AltaProductosComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if(this.isEditar()){
+      this.obtenerProducto();
+    }
     this.obtenerCategorias();
     this.obtenerMarcas();
+  }
+
+  cargarDatosFormulario() {
+    this.formulario.setValue({
+      nombre: this.producto.nombreProducto,
+      descripcion: this.producto.descripcion,
+      codigo: this.producto.codigoProducto,
+      precio: this.producto.precio,
+      inventario: this.producto.inventario,
+      marca: this.producto.marca.idMarca,
+      categoria: this.producto.categoria.idCategoria
+    })
   }
 
   obtenerCategorias(): void{
@@ -52,6 +69,21 @@ export class AltaProductosComponent implements OnInit {
         // Manejar los datos recibidos
         this.categorias = datos;
         console.log(this.categorias);
+      },
+      (error) => {
+        // Manejar errores
+        console.error('Error al obtener datos:', error);
+      }
+    );
+  }
+
+  obtenerProducto(){
+    this.productosService.obtenerProducto(this.idProducto).subscribe(
+      (datos) => {
+        // Manejar los datos recibidos
+        this.producto = datos;
+        this.cargarDatosFormulario();
+        console.log(this.producto);
       },
       (error) => {
         // Manejar errores
@@ -94,6 +126,35 @@ export class AltaProductosComponent implements OnInit {
         console.error('Error al obtener datos:', error);
       }
     );
+  }
+
+  actualizarProducto(){
+    console.log(this.formulario.value);
+    this.productosService.actualizarProducto(this.idProducto, this.formulario.value).subscribe(
+      (datos) => {
+        Swal.fire('Correcto', '¡Se actualizo correctamente!', 'success');
+        this.router.navigate(['/productos']);
+      },
+      (error) => {
+        // Manejar errores
+        console.error('Error al obtener datos:', error);
+      }
+    );
+  }
+
+  isEditar(): boolean {
+    let bandera: boolean = false;
+    this.route.paramMap.subscribe(param => {
+      if(param.has("id")){
+        this.idProducto = this.route.snapshot.paramMap.get("id");
+        bandera = true;
+      }
+    })
+    return bandera;
+  }
+
+  onInputChange() {
+    this.inputTouched = true;
   }
 
 }
