@@ -33,6 +33,10 @@ export class ProductosService {
     return this.http.put<any>(`${this.URL}/${idProducto}`, request);
   }
 
+  eliminarProducto(idProducto:any){
+    return this.http.delete<any>(`${this.URL}/${idProducto}`);
+  }
+
   ventaProductos(request: any){
     return this.http.post<any>(`${this.URL}/ventas`, request);
   }

@@ -35,6 +35,10 @@
                   title="Editar de producto">
                   <i class="fas fa-edit"></i>
                 </button>
+                <button type="button" class="btn btn-sm btn-danger" style="margin-right: 10px;" title="Baja de producto"
+                  (click)="eliminarProducto(producto.idProducto)">
+                  <i class="fas fa-trash"></i>
+                </button>
               </td>
             </tr>
           </tbody>
