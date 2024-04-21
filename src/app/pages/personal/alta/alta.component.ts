@@ -17,8 +17,7 @@ export class AltaComponent implements OnInit {
   formulario: FormGroup;
   empleado?: Empleado;
   puestos: any[] = [];
-  gerentes: Empleado[] = [];
-  altaRequest = new AltaRequest("","","","");
+  altaRequest = new AltaRequest("","","","", true);
   nombre: string = '';
   apellidoP: string = '';
   apellidoM: string = '';

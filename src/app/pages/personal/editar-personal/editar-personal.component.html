@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body wizard-content">
+        <form autocomplete="off" class="tab-wizard wizard-circle" [formGroup]="formulario" (ngSubmit)="actualizarEmpleado()">
+          <!-- Step 1 -->
+          <section>
+            <div class="row">
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="lastName1">Nombre</label>
+                  <input formControlName="nombre" type="text"
+                    class="form-control" id="nombre" [value]="empleado?.nombre" placeholder="Ingrese el nombre">
+                  <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="emailAddress1">Apellido Paterno</label>
+                  <input formControlName="apellidoPaterno"
+                    type="text" class="form-control" id="apellidoPaterno" [value]="empleado?.apellidoPaterno" placeholder="Ingrese el primer apellido">
+                  <small
+                    *ngIf="formulario.get('apellidoPaterno')?.invalid && formulario.get('apellidoPaterno')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="phoneNumber1">Apellido Materno</label>
+                  <input formControlName="apellidoMaterno"
+                    type="text" class="form-control" id="apellidoMaterno" [value]="empleado?.apellidoMaterno" placeholder="Ingrese el segundo apellido">
+                  <small
+                    *ngIf="formulario.get('apellidoMaterno')?.invalid && formulario.get('apellidoMaterno')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="location1">Estatus</label>
+                  <select (input)="onInputChange()" formControlName="estatus" class="custom-select form-control" id="estatus" name="location">
+                    <option *ngFor="let e of estatus" [ngValue]="e?.key">{{e.value}}</option>
+                  </select>
+                  <small *ngIf="formulario.get('estatus')?.invalid && formulario.get('estatus')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="location1">Puesto</label>
+                  <select (input)="onInputChange()" formControlName="puesto" class="custom-select form-control" id="puesto" name="location">
+                    <option *ngFor="let puesto of puestos" [ngValue]="puesto?.idRol">{{puesto.nombrePuesto}}</option>
+                  </select>
+                  <small *ngIf="formulario.get('puesto')?.invalid && formulario.get('puesto')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+            <div class="row pt-5">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!inputTouched">Actualizar</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

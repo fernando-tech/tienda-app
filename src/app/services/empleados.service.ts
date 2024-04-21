@@ -23,8 +23,16 @@ export class EmpleadosService {
     return this.http.get<any>(`${this.URL}?page=${page}&size=100`);
   }
 
+  obtenerEmpleado(idEmpleado: any): Observable<any> {
+    return this.http.get<any>(`${this.URL}/${idEmpleado}`);
+  }
+
   altaEmpelado(request: AltaRequest){
     return this.http.post<any>(`${this.URL}`, request);
+  }
+
+  actualizarEmpelado(idEmpleado:any, request: AltaRequest){
+    return this.http.put<any>(`${this.URL}/${idEmpleado}`, request);
   }
 
   eliminarEmpleado(idEmpleado: number){

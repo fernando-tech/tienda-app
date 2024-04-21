@@ -16,6 +16,7 @@
               <th>NOMBRE</th>
               <th>FECHA DE INGRESO</th>
               <th>PUESTO</th>
+              <th>ESTATUS</th>
               <th>ACCI&Oacute;N</th>
             </tr>
           </thead>
@@ -25,8 +26,10 @@
               <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}} {{empleado.nombre}}</td>
               <td>{{empleado.fechaIngreso}}</td>
               <td>{{empleado.rol.nombrePuesto}}</td>
+              <td *ngIf="empleado.activo">ACTIVO</td>
+              <td *ngIf="!empleado.activo">INACTIVO</td>
               <td>
-                <button type="button" class="btn btn-sm btn-primary" style="margin-right: 10px;"
+                <button type="button" [routerLink]="['/personal/editar', empleado.idEmpleado]" class="btn btn-sm btn-primary" style="margin-right: 10px;"
                   title="Editar de empleado" (click)="editarEmpleado(empleado.idEmpleado)">
                   <i class="fas fa-edit"></i>
                 </button>

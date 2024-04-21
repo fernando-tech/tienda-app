@@ -11,6 +11,7 @@ import { RolesComponent } from './roles/roles.component';
 import { AltaComponent } from './personal/alta/alta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AltaProductosComponent } from './productos/alta-productos/alta-productos.component';
+import { EditarPersonalComponent } from './personal/editar-personal/editar-personal.component';
 
 
 
@@ -23,7 +24,8 @@ import { AltaProductosComponent } from './productos/alta-productos/alta-producto
     PagesComponent,
     RolesComponent,
     AltaComponent,
-    AltaProductosComponent
+    AltaProductosComponent,
+    EditarPersonalComponent
   ],
   exports:[
     HomeComponent,
