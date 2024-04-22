@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductosService } from 'src/app/services/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-ventas',
@@ -64,18 +65,10 @@ export class VentasComponent implements OnInit {
     }
 
     finalizarCompra(){
-      console.log("Finalizar compra....", this.productosAgregados);
-
-      this.productosService.ventaProductos(this.productosAgregados).subscribe(
-        (datos) => {
-          // Manejar los datos recibidos
-          console.log("ventaaaaaaaaaa");
-        },
-        (error) => {
-          // Manejar errores
-          console.error('Error al obtener datos:', error);
-        }
-      );
+      Swal.fire('Venta exitosa', 'Total: $' + this.total + ' <small>MXN</small>', 'success');
+      this.productosAgregados = [];
+      this.total = 0;
+      this.formulario.get('codigo')?.setValue('');
     }
 
 }
