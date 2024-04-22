@@ -65,10 +65,19 @@ export class VentasComponent implements OnInit {
     }
 
     finalizarCompra(){
+
+      if(this.productosAgregados.length === 0){
+        Swal.fire('Aviso', 'Necesita agregar productos', 'info');
+        return;
+      }
+
       Swal.fire('Venta exitosa', 'Total: $' + this.total + ' <small>MXN</small>', 'success');
       this.productosAgregados = [];
       this.total = 0;
       this.formulario.get('codigo')?.setValue('');
     }
 
+    convertirAMayusculas(){
+      this.codigo = this.codigo.toUpperCase();
+    }
 }

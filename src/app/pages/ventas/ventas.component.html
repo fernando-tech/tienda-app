@@ -8,7 +8,7 @@
               <form autocomplete="off" [formGroup]="formulario">
                 <div class="form-group">
                   <label for="exampleInputEmail1">C&oacute;digo del producto</label>
-                  <input formControlName="codigo" type="text" class="form-control" id="exampleInputEmail1"
+                  <input formControlName="codigo" [(ngModel)]="codigo" (input)="convertirAMayusculas()" type="text" class="form-control" id="exampleInputEmail1"
                     placeholder="Ingresar C&oacute;digo">
                 </div>
                 <div style="text-align: center;">
