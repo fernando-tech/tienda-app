@@ -11,7 +11,7 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="lastName1">Nombre</label>
-                  <input (input)="onInputChange()" formControlName="nombre" type="text"
+                  <input (input)="onInputChange()" [(ngModel)]="nombreProducto" (input)="convertirAMayusculas()" formControlName="nombre" type="text"
                     class="form-control" id="nombre" [value]="producto?.nombreProducto" placeholder="Ingrese el nombre">
                   <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
                     class="text-danger">
@@ -24,7 +24,7 @@
               <div class="col-md-2"></div>
               <div class="col-md-8">
                 <div class="form-group">
-                  <label for="emailAddress1">Descripci&oacute;n</label>
+                  <label>Descripci&oacute;n</label>
                   <input (input)="onInputChange()" formControlName="descripcion"
                     type="text" class="form-control" id="descripcion" [value]="producto?.descripcion" placeholder="Ingrese la descripci&oacute;n">
                   <small
@@ -40,8 +40,8 @@
               <div class="col-md-8">
                 <div class="form-group">
                   <label for="emailAddress1" >C&oacute;digo</label>
-                  <input (input)="onInputChange()" formControlName="codigo" maxlength="5"
-                    type="text" class="form-control" id="codigo" [value]="producto?.codigoProducto" placeholder="Ingrese el c&oacute;digo del producto">
+                  <input (input)="onInputChange()" [(ngModel)]="codigoProducto" (input)="convertirAMayusculas()" formControlName="codigo" minlength="5" maxlength="5"
+                    type="text" class="form-control" id="codigo" [value]="producto?.codigoProducto" placeholder="Ingrese el c&oacute;digo del producto a 5 caracteres">
                   <small
                     *ngIf="formulario.get('codigo')?.invalid && formulario.get('codigo')?.touched"
                     class="text-danger">

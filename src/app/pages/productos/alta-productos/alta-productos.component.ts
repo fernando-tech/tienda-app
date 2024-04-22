@@ -14,11 +14,14 @@ import Swal from 'sweetalert2';
 })
 export class AltaProductosComponent implements OnInit {
 
+  codigoProducto: string = '';
+  nombreProducto: string = '';
   inputTouched: boolean = false;
   precioProducto: number = 0;
   cantidadProducto: number = 0;
   formulario: FormGroup;
   producto: any;
+  productos: any[] = [];
   marcas: any[] = [];
   categorias: any[] = [];
   altaRequest = new AltaRequest("","","",0,0,0,0);
@@ -35,7 +38,7 @@ export class AltaProductosComponent implements OnInit {
       this.formulario = this.fb.group({
         nombre: ['', Validators.required],
         descripcion: ['', Validators.required],
-        codigo: ['', [Validators.required, Validators.maxLength(5)]],
+        codigo: ['', [Validators.required, Validators.maxLength(5), Validators.minLength(5)]],
         precio: ['', Validators.required],
         inventario: ['', Validators.required],
         marca: ['', Validators.required],
@@ -47,6 +50,7 @@ export class AltaProductosComponent implements OnInit {
     if(this.isEditar()){
       this.obtenerProducto();
     }
+    this.obtenerProductos();
     this.obtenerCategorias();
     this.obtenerMarcas();
   }
@@ -69,6 +73,20 @@ export class AltaProductosComponent implements OnInit {
         // Manejar los datos recibidos
         this.categorias = datos;
         console.log(this.categorias);
+      },
+      (error) => {
+        // Manejar errores
+        console.error('Error al obtener datos:', error);
+      }
+    );
+  }
+
+  obtenerProductos(){
+    this.productosService.obtenerProductos(0).subscribe(
+      (datos) => {
+        // Manejar los datos recibidos
+        this.productos = datos.content;
+        console.log(this.productos);
       },
       (error) => {
         // Manejar errores
@@ -106,17 +124,26 @@ export class AltaProductosComponent implements OnInit {
     );
   }
 
-  altaProducto():void {
-    this.altaRequest.nombre = this.formulario.value.nombre;
-    this.altaRequest.descripcion = this.formulario.value.descripcion;
-    this.altaRequest.codigo = this.formulario.value.codigo;
-    this.altaRequest.precio = this.formulario.value.precio;
-    this.altaRequest.inventario = this.formulario.value.inventario;
-    this.altaRequest.categoria = this.formulario.value.categoria;
-    this.altaRequest.marca = this.formulario.value.marca;
 
-    console.log(this.formulario.value)
-    this.productosService.altaProductos(this.altaRequest).subscribe(
+  altaProducto():void {
+
+    console.log("ALTA")
+    console.log(this.formulario)
+    // validar si el codigo del producto se repite
+    this.producto =  this.productos.filter(elemento => elemento.codigoProducto.toUpperCase() === this.formulario.value.codigo.toUpperCase());
+
+    if(this.producto[0] != undefined){
+      this.formulario.get('codigo')?.setErrors({ 'invalid': true });
+      this.producto.nombreProducto = this.formulario.value.nombre;
+      this.producto.descripcion = this.formulario.value.descripcion;
+      this.producto.codigoProducto = this.formulario.value.codigo;
+      this.producto.precio = this.formulario.value.precio;
+      this.producto.inventario = this.formulario.value.inventario;
+      Swal.fire('Error', 'El c&oacute;digo del producto que ingreso ya existe, favor de ingresar uno distinto.', 'warning');
+      return;
+    }
+
+    this.productosService.altaProductos(this.formulario.value).subscribe(
       (datos) => {
         Swal.fire('Correcto', '¡Se registro correctamente!', 'success');
         this.router.navigate(['/productos']);
@@ -129,7 +156,21 @@ export class AltaProductosComponent implements OnInit {
   }
 
   actualizarProducto(){
-    console.log(this.formulario.value);
+
+    // validar si el codigo del producto se repite
+    this.producto =  this.productos.filter(elemento => elemento.codigoProducto.toUpperCase() === this.formulario.value.codigo.toUpperCase());
+
+    if((this.producto[0] != undefined) && (this.idProducto != this.producto[0].idProducto)){
+      this.formulario.get('codigo')?.setErrors({ 'invalid': true });
+      this.producto.nombreProducto = this.formulario.value.nombre;
+      this.producto.descripcion = this.formulario.value.descripcion;
+      this.producto.codigoProducto = this.formulario.value.codigo;
+      this.producto.precio = this.formulario.value.precio;
+      this.producto.inventario = this.formulario.value.inventario;
+      Swal.fire('Error', 'El c&oacute;digo del producto que ingreso ya existe, favor de ingresar uno distinto.', 'warning');
+      return;
+    }
+
     this.productosService.actualizarProducto(this.idProducto, this.formulario.value).subscribe(
       (datos) => {
         Swal.fire('Correcto', '¡Se actualizo correctamente!', 'success');
@@ -155,6 +196,11 @@ export class AltaProductosComponent implements OnInit {
 
   onInputChange() {
     this.inputTouched = true;
+  }
+
+  convertirAMayusculas(){
+    this.codigoProducto = this.codigoProducto.toUpperCase();
+    this.nombreProducto = this.nombreProducto.toUpperCase();
   }
 
 }

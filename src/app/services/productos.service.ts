@@ -25,7 +25,7 @@ export class ProductosService {
     return this.http.get<any>(`${this.URL}/${idProducto}`);
   }
 
-  altaProductos(request: AltaRequest){
+  altaProductos(request: any){
     return this.http.post<any>(`${this.URL}`, request);
   }
 
