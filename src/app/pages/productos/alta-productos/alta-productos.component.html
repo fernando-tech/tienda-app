@@ -54,7 +54,7 @@
               <div class="col-md-2"></div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="emailAddress1">Precio</label>
+                  <label for="emailAddress1">Precio Unitario</label>
                   <input (input)="onInputChange()" formControlName="precio" pattern="^\d*(\.\d+)?$" (ngModel)="precioProducto"
                     type="text" class="form-control" id="precio" [value]="producto?.precio" placeholder="Ingrese solo números">
                   <small
@@ -66,7 +66,7 @@
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="emailAddress1">Cantidad</label>
+                  <label for="emailAddress1">Cantidad en Inventario</label>
                   <input (input)="onInputChange()" formControlName="inventario" pattern="^\d*(\.\d+)?$" (ngModel)="cantidadProducto"
                     type="text" class="form-control" id="inventario" [value]="producto?.inventario" placeholder="Ingrese solo números">
                   <small
