@@ -9,7 +9,7 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive pt-0" style="height: 450px;">
-        <table class="table table-head-fixed table-hover text-nowrap table-striped">
+        <table class="table table-head-fixed table-hover table-striped">
           <thead>
             <tr>
               <th>NO. EMPLEADO</th>
@@ -17,8 +17,8 @@
               <th>EMPRESA</th>
               <th>RFC</th>
               <th>TELEFONO</th>
-              <th>DIRECCION</th>
-              <th>ACCI&Oacute;N</th>
+              <th>DIRECCI&Oacute;N</th>
+              <th style="width: 120px;">ACCI&Oacute;N</th>
             </tr>
           </thead>
           <tbody>
@@ -34,7 +34,7 @@
                   title="Editar proveedor">
                   <i class="fas fa-edit"></i>
                 </button>
-                <button type="button" class="btn btn-sm btn-danger" style="margin-right: 10px;" title="Baja de proveedor"
+                <button type="button" class="btn btn-sm btn-danger" title="Baja de proveedor"
                   (click)="eliminarProveedor(proveedor.idUsuario)">
                   <i class="fas fa-trash"></i>
                 </button>
