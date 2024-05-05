@@ -12,6 +12,8 @@ import { AltaComponent } from './personal/alta/alta.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AltaProductosComponent } from './productos/alta-productos/alta-productos.component';
 import { EditarPersonalComponent } from './personal/editar-personal/editar-personal.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { AltaProveedorComponent } from './proveedores/alta-proveedor/alta-proveedor.component';
 
 
 
@@ -26,6 +28,8 @@ import { EditarPersonalComponent } from './personal/editar-personal/editar-perso
     AltaComponent,
     AltaProductosComponent,
     EditarPersonalComponent,
+    ProveedoresComponent,
+    AltaProveedorComponent,
   ],
   exports:[
     HomeComponent,

@@ -8,6 +8,8 @@ import { PersonalComponent } from './personal/personal.component';
 import { AltaComponent } from './personal/alta/alta.component';
 import { AltaProductosComponent } from './productos/alta-productos/alta-productos.component';
 import { EditarPersonalComponent } from './personal/editar-personal/editar-personal.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { AltaProveedorComponent } from './proveedores/alta-proveedor/alta-proveedor.component';
 
 
 
@@ -22,6 +24,9 @@ const routes: Routes = [
       {path: 'personal/editar/:id', component: EditarPersonalComponent, data: {title: "Actualizar Empleado"}},
       {path: 'productos/alta', component: AltaProductosComponent, data: {title: "Alta de Producto"}},
       {path: 'productos/editar/:id', component: AltaProductosComponent, data: {title: "Actualizar de Producto"}},
+      {path: 'proveedores', component: ProveedoresComponent, data: {title: "Proveedores"}},
+      {path: 'proveedores/alta', component: AltaProveedorComponent, data: {title: "Alta de Proveedor"}},
+      {path: 'proveedores/editar/:id', component: AltaProveedorComponent, data: {title: "Actualizar Proveedor"}},
       {path: '', redirectTo: '/home', pathMatch: 'full'},
     ]},
 ];

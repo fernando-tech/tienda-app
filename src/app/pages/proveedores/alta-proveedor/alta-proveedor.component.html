@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body wizard-content">
+        <form autocomplete="off" class="tab-wizard wizard-circle" [formGroup]="formulario" (ngSubmit)="altaEmpleado()">
+          <!-- Step 1 -->
+          <section>
+            <div class="row">
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="lastName1">Nombre</label>
+                  <input [(ngModel)]="nombre" (input)="convertirAMayusculas()" formControlName="nombre" type="text"
+                    class="form-control" id="nombre" [value]="proveedor?.nombre" placeholder="Ingrese el nombre">
+                  <small *ngIf="formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="emailAddress1">Apellido Paterno</label>
+                  <input [(ngModel)]="apellidoP" (input)="convertirAMayusculas()" formControlName="apellidoPaterno"
+                    type="text" class="form-control" id="apellidoPaterno" [value]="proveedor?.apellidoPaterno" placeholder="Ingrese el primer apellido">
+                  <small
+                    *ngIf="formulario.get('apellidoPaterno')?.invalid && formulario.get('apellidoPaterno')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="phoneNumber1">Apellido Materno</label>
+                  <input [(ngModel)]="apellidoM" (input)="convertirAMayusculas()" formControlName="apellidoMaterno"
+                    type="text" class="form-control" id="apellidoMaterno" [value]="proveedor?.apellidoMaterno" placeholder="Ingrese el segundo apellido">
+                  <small
+                    *ngIf="formulario.get('apellidoMaterno')?.invalid && formulario.get('apellidoMaterno')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="phoneNumber1">Nombre de la Compa&ntilde;ia</label>
+                  <input formControlName="nombreCompania"
+                    type="text" class="form-control" id="nombreCompania" [value]="proveedor?.nombreCompania" placeholder="Ingrese nombre de la compa&ntilde;ia">
+                  <small
+                    *ngIf="formulario.get('nombreCompania')?.invalid && formulario.get('nombreCompania')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label for="phoneNumber1">Direcci&oacute;n de la Compa&ntilde;ia</label>
+                  <input formControlName="direccion"
+                    type="text" class="form-control" id="direccion" [value]="proveedor?.direccion" placeholder="Ingrese direcci&oacute;n de la compa&ntilde;ia">
+                  <small
+                    *ngIf="formulario.get('direccion')?.invalid && formulario.get('direccion')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+              <div class="col-md-2"></div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="phoneNumber1">RFC</label>
+                  <input [(ngModel)]="rfc" (input)="convertirAMayusculas()" formControlName="rfc"
+                    type="text" class="form-control" id="rfc" [value]="proveedor?.rfc" placeholder="Ingrese rfc de la compa&ntilde;ia">
+                  <small
+                    *ngIf="formulario.get('rfc')?.invalid && formulario.get('rfc')?.touched"
+                    class="text-danger">
+                    Este campo no puede estar vacio
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="tel">Tel&eacute;fono</label>
+                  <input formControlName="telefono" (keypress)="soloNumeros($event)"
+                    type="text" class="form-control" id="telefono" [value]="proveedor?.telefono" placeholder="Ingrese tel&eacute;fono de la compa&ntilde;ia">
+                  <small
+                    *ngIf="formulario.get('telefono')?.invalid && formulario.get('telefono')?.touched"
+                    class="text-danger">
+                    El tel&eacute;fono debe ser a 10 d&iacute;gitos
+                  </small>
+                </div>
+              </div>
+              <div class="col-md-2"></div>
+
+            </div>
+
+            <div class="row pt-5">
+              <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="formulario.invalid">Continuar</button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>
+          </section>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

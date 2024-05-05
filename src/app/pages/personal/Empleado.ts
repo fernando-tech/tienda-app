@@ -2,7 +2,7 @@ import { Rol } from "../roles/Rol";
 
 
 export class Empleado {
-    idEmpleado: number;
+    idUsuario: number;
     nombre: string;
     apellidoPaterno: string;
     apellidoMaterno: string;
@@ -12,8 +12,8 @@ export class Empleado {
     rol: Rol;
 
 
-    constructor(idEmpleado: number, nombre: string, apellidoPaterno: string, apellidoMaterno: string, fechaIngreso: Date, fechaSalida: Date, activo: Boolean, rol: Rol) {
-      this.idEmpleado = idEmpleado;
+    constructor(idUsuario: number, nombre: string, apellidoPaterno: string, apellidoMaterno: string, fechaIngreso: Date, fechaSalida: Date, activo: Boolean, rol: Rol) {
+      this.idUsuario = idUsuario;
       this.nombre = nombre;
       this.apellidoPaterno = apellidoPaterno;
       this.apellidoMaterno = apellidoMaterno;

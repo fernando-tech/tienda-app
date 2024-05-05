@@ -22,19 +22,19 @@
           </thead>
           <tbody>
             <tr *ngFor="let empleado of empleados">
-              <td>{{empleado.idEmpleado}}</td>
+              <td>{{empleado.idUsuario}}</td>
               <td>{{empleado.apellidoPaterno}} {{empleado.apellidoMaterno}} {{empleado.nombre}}</td>
               <td>{{empleado.fechaIngreso}}</td>
               <td>{{empleado.rol.nombrePuesto}}</td>
               <td *ngIf="empleado.activo">ACTIVO</td>
               <td *ngIf="!empleado.activo">INACTIVO</td>
               <td>
-                <button type="button" [routerLink]="['/personal/editar', empleado.idEmpleado]" class="btn btn-sm btn-primary" style="margin-right: 10px;"
-                  title="Editar de empleado" (click)="editarEmpleado(empleado.idEmpleado)">
+                <button type="button" [routerLink]="['/personal/editar', empleado.idUsuario]" class="btn btn-sm btn-primary" style="margin-right: 10px;"
+                  title="Editar empleado" (click)="editarEmpleado(empleado.idUsuario)">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-danger" style="margin-right: 10px;" title="Baja de empleado"
-                  (click)="eliminarEmpleado(empleado.idEmpleado)">
+                  (click)="eliminarEmpleado(empleado.idUsuario)">
                   <i class="fas fa-trash"></i>
                 </button>
               </td>
