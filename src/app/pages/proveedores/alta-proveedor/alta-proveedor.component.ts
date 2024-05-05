@@ -19,6 +19,8 @@ export class AltaProveedorComponent implements OnInit {
   apellidoP: string = '';
   apellidoM: string = '';
   rfc: string = '';
+  idUsuario:any;
+  inputTouched: boolean = false;
 
 
 
@@ -39,14 +41,59 @@ export class AltaProveedorComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    if(this.isEditar()){
+      this.obtenerProveedor();
+    }
   }
 
-  altaEmpleado():void {
+  obtenerProveedor(){
+    this.empleadosService.obtenerEmpleado(this.idUsuario).subscribe(
+      (datos) => {
+        // Manejar los datos recibidos
+        this.proveedor = datos;
+        this.cargarDatosFormulario();
+        console.log(this.proveedor);
+      },
+      (error) => {
+        // Manejar errores
+        console.error('Error al obtener datos:', error);
+      }
+    );
+  }
+
+  cargarDatosFormulario() {
+    this.formulario.setValue({
+      nombre: this.proveedor.nombre,
+      apellidoPaterno: this.proveedor.apellidoPaterno,
+      apellidoMaterno: this.proveedor.apellidoMaterno,
+      nombreCompania: this.proveedor.proveedor.nombre,
+      direccion: this.proveedor.proveedor.direccion,
+      rfc: this.proveedor.proveedor.rfc,
+      telefono: this.proveedor.proveedor.telefono
+    })
+  }
+
+  altaProveedor():void {
 
     console.log(this.formulario.value);
     this.empleadosService.altaProveedor(this.formulario.value).subscribe(
       (datos) => {
         Swal.fire('Correcto', '¡Se registro correctamente!', 'success');
+        this.router.navigate(['/proveedores']);
+      },
+      (error) => {
+        // Manejar errores
+        console.error('Error al obtener datos:', error);
+      }
+    );
+  }
+
+  actualizarProveedor():void {
+
+    console.log(this.formulario.value);
+    this.empleadosService.actualizarProveedor(this.idUsuario, this.formulario.value).subscribe(
+      (datos) => {
+        Swal.fire('Correcto', '¡Se actualizo correctamente!', 'success');
         this.router.navigate(['/proveedores']);
       },
       (error) => {
@@ -68,6 +115,21 @@ export class AltaProveedorComponent implements OnInit {
     if (isNaN(Number(input)) && input !== 'Backspace' && input !== 'Delete') {
       event.preventDefault();
     }
+  }
+
+  isEditar(): boolean {
+    let bandera: boolean = false;
+    this.route.paramMap.subscribe(param => {
+      if(param.has("id")){
+        this.idUsuario = this.route.snapshot.paramMap.get("id");
+        bandera = true;
+      }
+    })
+    return bandera;
+  }
+
+  onInputChange() {
+    this.inputTouched = true;
   }
 
 }

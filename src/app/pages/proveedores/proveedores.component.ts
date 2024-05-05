@@ -32,7 +32,7 @@ export class ProveedoresComponent implements OnInit {
     );
   }
 
-  eliminarProveedor(idEmpleado: number){
+  eliminarProveedor(idUsuario: number){
     Swal.fire({
       title: '¿Esta seguro?',
       text: "El proveedor sera eliminado",
@@ -44,7 +44,7 @@ export class ProveedoresComponent implements OnInit {
       cancelButtonText: 'No'
     }).then((result) => {
       if (result.value) {
-        this.empleadosService.eliminarEmpleado(idEmpleado).subscribe(
+        this.empleadosService.eliminarProveedor(idUsuario).subscribe(
           (datos) => {
             Swal.fire('Correcto', '¡Se elimino correctamente!', 'success').then(() => {
               this.getProveedores();
@@ -52,10 +52,6 @@ export class ProveedoresComponent implements OnInit {
           });
       }
     })
-  }
-
-  editarEmpleado(idEmpleado: number){
-
   }
 
 }

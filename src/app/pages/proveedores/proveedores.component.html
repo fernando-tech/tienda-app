@@ -15,9 +15,9 @@
               <th>NO. EMPLEADO</th>
               <th>NOMBRE</th>
               <th>EMPRESA</th>
+              <th>RFC</th>
               <th>TELEFONO</th>
               <th>DIRECCION</th>
-              <th>ESTATUS</th>
               <th>ACCI&Oacute;N</th>
             </tr>
           </thead>
@@ -26,13 +26,12 @@
               <td>{{proveedor.idUsuario}}</td>
               <td>{{proveedor.apellidoPaterno}} {{proveedor.apellidoMaterno}} {{proveedor.nombre}}</td>
               <td>{{proveedor.proveedor.nombre}}</td>
+              <td>{{proveedor.proveedor.rfc}}</td>
               <td>{{proveedor.proveedor.telefono}}</td>
               <td>{{proveedor.proveedor.direccion}}</td>
-              <td *ngIf="proveedor.activo">ACTIVO</td>
-              <td *ngIf="!proveedor.activo">INACTIVO</td>
               <td>
                 <button type="button" [routerLink]="['/proveedores/editar', proveedor.idUsuario]" class="btn btn-sm btn-primary" style="margin-right: 10px;"
-                  title="Editar proveedor" (click)="editarEmpleado(proveedor.idUsuario)">
+                  title="Editar proveedor">
                   <i class="fas fa-edit"></i>
                 </button>
                 <button type="button" class="btn btn-sm btn-danger" style="margin-right: 10px;" title="Baja de proveedor"

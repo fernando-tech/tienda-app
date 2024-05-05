@@ -54,4 +54,8 @@ export class EmpleadosService {
   eliminarProveedor(idUsuario: number){
     return this.http.delete<any>(`${this.URL}/proveedores/${idUsuario}`);
   }
+
+  obtenerProveedor(idUsuario: any): Observable<any> {
+    return this.http.get<any>(`${this.URL}/proveedores/${idUsuario}`);
+  }
 }
